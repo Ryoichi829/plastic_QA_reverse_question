@@ -50,6 +50,8 @@ st.write("gpt-4oを使ったチャットボット　―質問返し―")
 
 if "user_question" not in st.session_state:
     st.session_state.user_question = ""
+if "reverse_questions" not in st.session_state:
+    st.session_state.reverse_questions = ""
 if "reverse_answer1" not in st.session_state:
     st.session_state.reverse_answer1 = ""
 if "reverse_answer2" not in st.session_state:
@@ -60,8 +62,9 @@ user_question = st.text_input("質問を入力してください:", key="user_qu
 
 if user_question:
     # 逆質問を生成
-    if st.session_state.user_question != "":
+    if st.session_state.user_question != "" and len(st.session_state.reverse_questions) == 0:
         reverse_questions = generate_reverse_questions_chain(user_question).split("\n")
+        st.session_state.reverse_questions = reverse_questions
 
     if len(reverse_questions) >= 2:
         # 逆質問を表示し、ユーザの回答を取得
