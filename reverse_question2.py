@@ -48,6 +48,11 @@ def generate_final_answer_chain(user_question, reverse_questions, answers):
 st.title("プラスチック Ｑ＆Ａ")
 st.write("gpt-4oを使ったチャットボット　―質問返し―")
 
+if "reverse_answer1" not in st.session_state:
+    st.session_state.reverse_answer1 = ""
+if "reverse_answer2" not in st.session_state:
+    st.session_state.reverse_answer2 = ""
+
 # ユーザからの質問を入力
 user_question = st.text_input("質問を入力してください:")
 
@@ -57,13 +62,15 @@ if user_question:
 
     if len(reverse_questions) >= 2:
         # 逆質問を表示し、ユーザの回答を取得
-        reverse_answer1 = st.text_input(f"逆質問 {reverse_questions[0]}")
-        reverse_answer2 = st.text_input(f"逆質問 {reverse_questions[1]}")
+        reverse_answer1 = st.text_input(f"逆質問 {reverse_questions[0]}", key="reverse_answer1")
+        reverse_answer2 = st.text_input(f"逆質問 {reverse_questions[1]}", key="reverse_answer2")
 
-        if reverse_answer1 and reverse_answer2:
+        if st.session_state.reverse_answer1 and st.session_state.reverse_answer2:
             # ユーザの回答を踏まえた最終回答を生成
             final_answer = generate_final_answer_chain(user_question, reverse_questions, [reverse_answer1, reverse_answer2])
             st.write("回答:")
             st.write(final_answer)
+        else:
+            st.write("二つの逆質問に答えてください。")
     else:
         st.write("逆質問を生成できませんでした。もう一度試してください。")
