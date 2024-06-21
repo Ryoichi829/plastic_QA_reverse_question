@@ -60,7 +60,7 @@ user_question = st.text_input("質問を入力してください:", key="user_qu
 
 if user_question:
     # 逆質問を生成
-    if st.session_stae.user_question != "":
+    if st.session_state.user_question != "":
         reverse_questions = generate_reverse_questions_chain(user_question).split("\n")
 
     if len(reverse_questions) >= 2:
