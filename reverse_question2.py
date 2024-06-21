@@ -1,15 +1,15 @@
 import streamlit as st
-import openai
-from langchain.llms import OpenAIChat
+from openai import OpenAI
+from langchain_community.chat_models import ChatOpenAI
 from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain, SimpleSequentialChain
+from langchain.chains import LLMChain
 
 import os
 # Streamlit Community Cloudの「Secrets」からOpenAI API keyを取得
 os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
 
 # LLMの初期化
-llm = OpenAIChat(model="gpt-4o")
+llm = ChatOpenAI(model="gpt-4o")
 
 def generate_reverse_questions_chain(user_question):
     # 逆質問生成のためのプロンプトテンプレート
