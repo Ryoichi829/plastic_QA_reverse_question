@@ -8,7 +8,7 @@ import os
 os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
 
 # LLMの初期化
-llm = OpenAI(model="gpt-4", openai_api_key=openai.api_key)
+llm = OpenAI(model="gpt-4")
 
 def generate_reverse_questions_chain(user_question):
     # 逆質問生成のためのプロンプトテンプレート
