@@ -1,5 +1,6 @@
 import streamlit as st
-from langchain.llms import OpenAI
+import openai
+from langchain.llms import OpenAIChat
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SimpleSequentialChain
 
@@ -8,7 +9,7 @@ import os
 os.environ["OPENAI_API_KEY"] = st.secrets.OpenAIAPI.openai_api_key
 
 # LLMの初期化
-llm = OpenAI(model="gpt-4")
+llm = OpenAIChat(model="gpt-4o")
 
 def generate_reverse_questions_chain(user_question):
     # 逆質問生成のためのプロンプトテンプレート
@@ -45,6 +46,7 @@ def generate_final_answer_chain(user_question, reverse_questions, answers):
 
 
 st.title("プラスチックのQAシステム")
+st.write("gpt-4oを使ってます　―質問返し―")
 
 # ユーザからの質問を入力
 user_question = st.text_input("質問を入力してください:")
