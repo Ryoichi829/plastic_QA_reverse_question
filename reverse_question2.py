@@ -66,7 +66,7 @@ if user_question:
         reverse_questions = generate_reverse_questions_chain(user_question).split("\n")
         st.session_state.reverse_questions = reverse_questions
 
-    if len(reverse_questions) >= 2:
+    if len(st.session_state.reverse_questions) >= 2:
         # 逆質問を表示し、ユーザの回答を取得
         reverse_answer1 = st.text_input(f"逆質問 {reverse_questions[0]}", key="reverse_answer1")
         reverse_answer2 = st.text_input(f"逆質問 {reverse_questions[1]}", key="reverse_answer2")
@@ -77,6 +77,7 @@ if user_question:
             st.write("回答:")
             st.write(final_answer)
             st.session_state.user_question = ""
+            st.session_state.reverse_questions = ""
         else:
             st.write("二つの逆質問に答えてください。")
     else:
