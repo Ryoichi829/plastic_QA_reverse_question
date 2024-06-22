@@ -89,5 +89,3 @@ if len(st.session_state.reverse_questions) >= 2:
         st.session_state.reverse_answer1 = ""
         st.session_state.reverse_answer2 = ""
         
-    else:
-        st.write("逆質問を生成できませんでした。もう一度試してください。")
