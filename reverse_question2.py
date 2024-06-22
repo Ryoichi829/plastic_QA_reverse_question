@@ -18,8 +18,9 @@ def generate_reverse_questions_chain(user_question):
         template="ユーザからの質問: {question}\nこの質問の詳細を理解するために逆質問を2つ作成してください。" +
                  "逆質問は必ず2つ作成してください。" + "逆質問以外のテキストは出力しないでください。"
     )
-
+    st.write('reverse_question_template:', reverse_question_template:)
     reverse_chain = LLMChain(llm=llm, prompt=reverse_question_template)
+    st.write('reverse_chain.run:', reverse_chain.run({"question": user_question}))
     return reverse_chain.run({"question": user_question})
 
 def generate_final_answer_chain(user_question, reverse_questions, answers):
@@ -60,7 +61,8 @@ if "reverse_answer2" not in st.session_state:
 
 # ユーザからの質問を入力
 user_question = st.text_input("質問を入力してください:", key="user_question")
-
+st.write('user_question:', user_question)
+st.write('st.session_state.user_question:', st.session_state.user_question)
 if user_question and user_question != st.session_state.user_question:
     # 新しい質問が入力された場合
     st.session_state.user_question = user_question
