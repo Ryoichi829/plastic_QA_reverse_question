@@ -15,7 +15,8 @@ def generate_reverse_questions_chain(user_question):
     # 逆質問生成のためのプロンプトテンプレート
     reverse_question_template = PromptTemplate(
         input_variables=["question"],
-        template="ユーザからの質問: {question}\nこの質問の詳細を理解するために逆質問を2つ作成してください。"
+        template="ユーザからの質問: {question}\nこの質問の詳細を理解するために逆質問を2つ作成してください。" +
+                 "逆質問は必ず2つ作成してください。" + "逆質問以外のテキストは出力しないでください。"
     )
 
     reverse_chain = LLMChain(llm=llm, prompt=reverse_question_template)
