@@ -79,7 +79,6 @@ if user_question:
             st.write(final_answer)
             # st.session_state.user_question = ""
             # st.session_state.reverse_questions = ""
-        else:
-            st.write("二つの逆質問に答えてください。")
+        
     else:
         st.write("逆質問を生成できませんでした。もう一度試してください。")
