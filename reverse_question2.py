@@ -60,14 +60,14 @@ if "reverse_answer2" not in st.session_state:
     st.session_state.reverse_answer2 = ""
 
 # ユーザからの質問を入力
-user_question = st.text_input("質問を入力してください:", key="user_question")
-st.write('user_question:', user_question)
+question = st.text_input("質問を入力してください:")
+st.write('user_question:', question)
 st.write('st.session_state.user_question:', st.session_state.user_question)
-if (user_question) and (user_question != st.session_state.user_question):
+if (question) and (question != st.session_state.user_question):
     # 新しい質問が入力された場合
     st.write('# 新しい質問が入力された場合')
-    st.session_state.user_question = user_question
-    st.session_state.reverse_questions = generate_reverse_questions_chain(user_question).split("\n")
+    st.session_state.user_question = question
+    st.session_state.reverse_questions = generate_reverse_questions_chain(question).split("\n")
     st.session_state.reverse_answer1 = ""
     st.session_state.reverse_answer2 = ""
 
