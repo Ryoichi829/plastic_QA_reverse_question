@@ -76,8 +76,8 @@ if user_question:
             final_answer = generate_final_answer_chain(user_question, st.session_state.reverse_questions, [reverse_answer1, reverse_answer2])
             st.write("回答:")
             st.write(final_answer)
-            st.session_state.user_question = ""
-            st.session_state.reverse_questions = ""
+            # st.session_state.user_question = ""
+            # st.session_state.reverse_questions = ""
         else:
             st.write("二つの逆質問に答えてください。")
     else:
