@@ -80,7 +80,7 @@ if len(st.session_state.reverse_questions) >= 2:
         final_answer = generate_final_answer_chain(
                 st.session_state.user_question, 
                 st.session_state.reverse_questions, 
-                [st.session_state_reverse_answer1, st.session_state.reverse_answer2])
+                [st.session_state.reverse_answer1, st.session_state.reverse_answer2])
         st.write("回答:")
         st.write(final_answer)
 
