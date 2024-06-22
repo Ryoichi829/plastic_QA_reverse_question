@@ -61,11 +61,8 @@ if "reverse_answer2" not in st.session_state:
 
 # ユーザからの質問を入力
 question = st.text_input("質問を入力してください:")
-st.write('user_question:', question)
-st.write('st.session_state.user_question:', st.session_state.user_question)
 if (question) and (question != st.session_state.user_question):
     # 新しい質問が入力された場合
-    st.write('# 新しい質問が入力された場合')
     st.session_state.user_question = question
     st.session_state.reverse_questions = generate_reverse_questions_chain(question).split("\n")
     st.session_state.reverse_answer1 = ""
@@ -76,7 +73,7 @@ if len(st.session_state.reverse_questions) >= 2:
     answer1 = st.text_input(f"逆質問 {st.session_state.reverse_questions[0]}", key="reverse_answer1")
     reverse_answer2 = st.text_input(f"逆質問 {st.session_state.reverse_questions[1]}", key="reverse_answer2")
 
-    if reverse_answer1 and reverse_answer2:
+    if answer1 and reverse_answer2:
         st.session_state.reverse_answer1 = answer1
         st.session_state.reverse_answer2 = reverse_answer2
         # ユーザの回答を踏まえた最終回答を生成
