@@ -73,11 +73,11 @@ if (question) and (question != st.session_state.user_question):
 
 if len(st.session_state.reverse_questions) >= 2:
     # 逆質問を表示し、ユーザの回答を取得
-    reverse_answer1 = st.text_input(f"逆質問 {st.session_state.reverse_questions[0]}", key="reverse_answer1", on_change=update_ans1)
+    answer1 = st.text_input(f"逆質問 {st.session_state.reverse_questions[0]}")
     reverse_answer2 = st.text_input(f"逆質問 {st.session_state.reverse_questions[1]}", key="reverse_answer2")
 
-    if reverse_answer1 and reverse_answer2:
-        # st.session_state.reverse_answer1 = reverse_answer1
+    if answer1 and reverse_answer2:
+        st.session_state.reverse_answer1 = answer1
         st.session_state.reverse_answer2 = reverse_answer2
         # ユーザの回答を踏まえた最終回答を生成
         final_answer = generate_final_answer_chain(
