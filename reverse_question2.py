@@ -18,7 +18,7 @@ def generate_reverse_questions_chain(user_question):
         template="ユーザからの質問: {question}\nこの質問の詳細を理解するために逆質問を2つ作成してください。" +
                  "逆質問は必ず2つ作成してください。" + "逆質問以外のテキストは出力しないでください。"
     )
-    st.write('reverse_question_template:', reverse_question_template:)
+    st.write('reverse_question_template:', reverse_question_template)
     reverse_chain = LLMChain(llm=llm, prompt=reverse_question_template)
     st.write('reverse_chain.run:', reverse_chain.run({"question": user_question}))
     return reverse_chain.run({"question": user_question})
