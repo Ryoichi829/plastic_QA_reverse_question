@@ -45,7 +45,7 @@ def generate_final_answer_chain(user_question, reverse_questions, answers):
     })
     
 st.title("プラスチック Ｑ＆Ａ")
-st.write("gpt-4oを使ったチャットボット　―質問返し―")
+st.write("gpt-4oを使ったチャットボット　― 質問返し(ＱＡ書籍未使用) ―")
 
 if "user_question" not in st.session_state:
     st.session_state.user_question = ""
